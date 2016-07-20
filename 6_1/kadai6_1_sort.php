@@ -114,6 +114,36 @@ switch ($_GET["q"])
 		break;
 }
 
+//昇順・降順情報をクッキーに保存
+$cookieValueS = $sort;
+setcookie("cookie_keyS", $cookieValueS);
+$_COOKIE["cookie_keyS"] = $cookieValueS;
+
+//カラムGET値をクッキーに保存
+$sannkau = $_GET["q"];
+$cookieValueT = $sannkau;
+setcookie("cookie_keyT", $cookieValueT);
+$_COOKIE["cookie_keyT"] = $cookieValueT;
+
+//昇順・降順マーク『▲▼』をクッキーに保存
+$cookieValueA = $triangle;
+setcookie("cookie_keyA", $cookieValueA);
+$_COOKIE["cookie_keyA"] = $cookieValueA;
+
+//フラグ情報をクッキーに保存
+$cookieValueC = $flag;
+setcookie("cookie_keyC", $cookieValueC);
+$_COOKIE["cookie_keyC"] = $cookieValueC;
+
+
+
+//昇順・降順対象のカラム情報をクッキーに保存
+$cookieValueQ = $sortby;
+setcookie("cookie_keyQ", $cookieValueQ);
+$_COOKIE["cookie_keyQ"] = $cookieValueQ;
+
+
+
 //ページャに持たせるソートGET値
 $pageSort = "&s=".$s ."&q=".$q;
 
