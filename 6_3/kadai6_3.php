@@ -58,6 +58,16 @@ if (isset($_COOKIE["cookie_keyS"]) && isset($_COOKIE["cookie_keyQ"]) && isset($_
 	$flag = $_COOKIE["cookie_keyC"];
 }
 
+//ソートの設定
+if($rows >= $obj->page_rec)
+{
+	$sortlink = $obj->path .$page ."&s=".$flag;
+}
+else
+{
+	$sortlink = "?s=".$flag;
+}
+
 
 //CSVダウンロードチェック
 if (isset($_POST["down_csv"]))
@@ -426,77 +436,77 @@ $result = mysql_query("$sql");
 		<tr>
 			<th>削除</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=1">
+				<a href="<?php print $sortlink; ?>&q=1">
 					全国地方公共団体コード<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==1){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=2">
-				旧郵便番号<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==2){ print $triangle;} }?>
+				<a href="<?php print $sortlink; ?>&q=2">
+					旧郵便番号<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==2){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=3">
+				<a href="<?php print $sortlink; ?>&q=3">
 					郵便番号<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==3){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=4">
+				<a href="<?php print $sortlink; ?>&q=4">
 					都道府県名(半角カタカナ)<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==4){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=5">
+				<a href="<?php print $sortlink; ?>&q=5">
 					市区町村名(半角カタカナ)<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==5){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=6">
+				<a href="<?php print $sortlink; ?>&q=6">
 					町域名(半角カタカナ)<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==6){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page."&s=".$flag; }else{print "?s=".$flag;}?>&q=7">
+				<a href="<?php print $sortlink; ?>&q=7">
 					都道府県名(漢字)<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==7){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=8">
+				<a href="<?php print $sortlink; ?>&q=8">
 					市区町村名(漢字)<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==8){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=9">
+				<a href="<?php print $sortlink; ?>&q=9">
 					町域名(漢字)<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==9){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=10">
+				<a href="<?php print $sortlink; ?>&q=10">
 					一町域で複数の郵便番号か<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==10){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=11">
+				<a href="<?php print $sortlink; ?>&q=11">
 					小字毎に番地が起番されている町域<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==11){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=12">
+				<a href="<?php print $sortlink; ?>&q=12">
 					丁目を有する町域名か<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==12){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=13">
+				<a href="<?php print $sortlink; ?>&q=13">
 					一郵便番号で複数の町域か<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==13){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=14">
+				<a href="<?php print $sortlink; ?>&q=14">
 					更新確認<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==14){ print $triangle;} }?>
 				</a>
 			</th>
 			<th>
-				<a href="<?php if($rows >= $obj->page_rec){ print $obj->path .$page ."&s=".$flag; }else{print "?s=".$flag;}?>&q=15">
+				<a href="<?php print $sortlink; ?>&q=15">
 					更新理由<?php if (isset($_COOKIE["cookie_keyT"])) { if ($_COOKIE["cookie_keyT"]==15){ print $triangle;} }?>
 				</a>
 			</th>

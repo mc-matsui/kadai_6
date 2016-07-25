@@ -5,6 +5,7 @@ require_once( 'db.php' );
 //CSVダウンロードチェック
 if (isset($_POST["upload_csv"]))
 {
+	setlocale(LC_ALL, 'ja_JP.SJIS');
 	uploadCsv();
 }
 
@@ -15,6 +16,8 @@ if (isset($_POST["upload_csv"]))
 
 function uploadCsv()
 {
+
+	//setlocale(LC_ALL, 'ja_JP.UTF-8');
 	//アップロードされたファイルか
 	if (is_uploaded_file($_FILES["csvfile"]["tmp_name"]))
 	{
@@ -43,6 +46,7 @@ function uploadCsv()
 				//配列に変換する
 				while (($data = fgetcsv($fp, 0, ",")) !== FALSE)
 				{
+					mb_convert_variables('utf-8', 'sjis-win', $data);
 					//DBに挿入
 					$sql = "INSERT INTO `kadai_matsui_ziplist`
 						VALUES (
